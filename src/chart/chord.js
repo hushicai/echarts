@@ -663,9 +663,9 @@ define(function (require) {
         },
 
         _buildLabels: function (serie, serieIdx, graph, mainSerie) {
-            var labelColor = this.query(
-                mainSerie, 'itemStyle.normal.label.color'
-            );
+            // var labelColor = this.query(
+                // mainSerie, 'itemStyle.normal.label.color'
+            // );
             var rotateLabel = this.query(
                 mainSerie, 'itemStyle.normal.label.rotate'
             );
@@ -706,8 +706,8 @@ define(function (require) {
                     hoverable: false,
                     style: {
                         text: node.data.label == null ? node.id : node.data.label,
-                        textAlign: isRightSide ? 'left' : 'right',
-                        color: labelColor || '#000000'
+                        textAlign: isRightSide ? 'left' : 'right'
+                        // color: labelColor || '#000000'
                     }
                 };
                 if (rotateLabel) {
@@ -725,7 +725,8 @@ define(function (require) {
                     labelShape.style.x = start[0];
                     labelShape.style.y = start[1];
                 }
-                labelShape.style.textColor = this.deepQuery(
+                // zrender/Text，并不支持textColor属性，使用的是color作为ctx的fillStyle
+                labelShape.style.color = this.deepQuery(
                     [node.data, mainSerie],
                     'itemStyle.normal.label.textStyle.color'
                 ) || '#fff';

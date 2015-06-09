@@ -16,8 +16,6 @@
  *
  */
 define(function (require) {
-    require('./macro');
-
     var ecConfig = require('./config');
     var zrUtil = require('zrender/tool/util');
     var zrEvent = require('zrender/tool/event');
